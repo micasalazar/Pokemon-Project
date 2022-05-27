@@ -63,59 +63,75 @@ const getPokemonDb = async () => {
 
 //==========================================POKEMON API&DATABASE====================================================
 
-const getMixInfo = async () => { //me traigo todo                 
-        const apiInfo = await getApiInfo();    //api y base de datos
-        const dbInfo = await getPokemonDb();
-        const allInfo = [...apiInfo,...dbInfo]   //-->concateno
+const getMixInfo = async () => { //me traigo todo de Api y Data Base                
+        const apiInfo = await getApiInfo();    //Me traigo data de Api
+        const dbInfo = await getPokemonDb();   //Me traigo data de DataBase
+        const allInfo = [...apiInfo,...dbInfo]   //-->concateno ambdas
         return allInfo;
     };
 
-
+// ==========================================FIND POKEMON BY NAME====================================================
+const showAllPokemon = async (name) => {
+    try {
+      const pokeApi = await axios.get(`https://pokeapi.co/api/v2/pokemon/${name.toLowerCase()}`);
+      const arr = [pokeApi.data];
+      let pokeName = arr.map((p) => {
+        let pokeObj = {
+          id: p.id,
+          name: p.name,
+          image: p.sprites.other.home.front_default,
+          hp: p.stats[0].base_stat,
+          attack: p.stats[1].base_stat,
+          defense: p.stats[2].base_stat,
+          defense: p.stats[5].base_stat,
+          height: p.height,
+          weight: p.weight,
+          type: p.types.map((t) => t.type.name),
+        };
+        return pokeObj;
+      });
+      
+      return pokeName;
+    } catch (error) {
+      return [];
+    }
+  };
 
 //====================================================== REQUEST======================================================
 
 //=================================================GET /pokemons======================================================
-
-const showPokemons = async(req,res)=>{
-    const {name} = req.query;
-try{    
-    if(name){
-        const pokeApi = await axios.get(`https://pokeapi.co/api/v2/pokemon/${name.toLowerCase()}`)
-        const arr = [pokeApi.data];
-       
-        let pokeName = arr.map(p =>{
-
-            let pokeObj={
-                id: p.id,
-                name: p.name,
-                image: p.sprites.other.home.front_default,
-                hp: p.stats[0].base_stat,
-                attack: p.stats[1].base_stat,
-                defense: p.stats[2].base_stat,
-                defense: p.stats[5].base_stat,
-                height: p.height,
-                weight: p.weight,
-                type: p.types.map(t=> t.type.name)
-            }               
-            return pokeObj;            
-        })         
-         const pokemonDb = await getPokemonDb();         
-         const pokeDb = pokemonDb.filter(e => e.name.toLowerCase().includes(name.toLowerCase()))
-         const allPokeInfo = pokeName.concat(pokeDb)       
-       
-        allPokeInfo
-        ? res.status(200).send(allPokeInfo)
-        : res.status(404).send({msg:"Pokemon Not Found by Name" })
-    
+const getPokeByName = async (req, res) => {
+    const { name } = req.query;
+  
+    try {
+      if (name) {
+        const pokemonDb = await getPokemonDb();
+        const pokeByApi = await showAllPokemon(name);
+  
+        const pokeDb = pokemonDb.filter(
+          (e) => e.name.toLowerCase() === name.toLowerCase()
+        );
+//   Para que solo  me traiga un pokemon creado por mi que ya existe en la api, debo comentar renglo 115-116-117, sacar el else y dejar solo el if
+        if (pokeDb.length > 0 && pokeByApi.length > 0) {
+          const allPoke = pokeDb.concat(pokeByApi);
+          return res.send(allPoke);
+        } else if (pokeDb.length > 0) {
+          return res.status(200).send(pokeDb);
+        } else if (pokeByApi.length > 0) {
+          return res.status(200).send(pokeByApi);
+        } else {
+          return res.status(404).send({ msg: "Pokemon Not Found", status: false });
+        }
+      } 
+      else {
+        const allPoke = await getMixInfo();
+        return res.status(200).send(allPoke);
+      }
+    } catch (error) {
+      res.status(404).send({ msg: "Pokemon Not Found" });
     }
-    else{
-        const allPokeInfo = await getMixInfo()
-        res.status(200).send(allPokeInfo)
-    }
-}catch(error){
-    res.status(404).send({msg:"Pokemon Not Found by Name", status:false })
-}
-}
+  };
+
 //===================================== GET /pokemons/:id===========================================================
 
 const showAllPokemonById = async (req, res) =>{
@@ -229,7 +245,8 @@ module.exports = {
     getApiInfo,
     getPokemonDb,
     getMixInfo,
-    showPokemons,
+    showAllPokemon,
+    getPokeByName,
     showAllPokemonById,
     getAllTypes, 
     addNewPokemon   
