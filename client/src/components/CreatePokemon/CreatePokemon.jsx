@@ -29,7 +29,7 @@ const [input, setInput] = useState({
     types:[], 
 })
 console.log(input)
-
+// Funcion validadora la hago afuera del componente--->como BackUp
 function validateForm(input){
     let errors={};
     const ReName = new RegExp(/^[A-Za-z\s]+$/g)
@@ -71,9 +71,9 @@ function validateForm(input){
     // if(input.img.length&&!ReUrl.test(input.img)){
     //     errors.img = 'Enter a valid url'
     // }
-    if(input.image.length&&input.image.length){
-        errors.image = 'The function of adding image has been temporarily disabled...'
-    }
+    // if(input.image.length&&input.image.length){
+    //     errors.image = 'The function of adding image has been temporarily disabled...'
+    // }
     return errors
 }
 useEffect(() => {

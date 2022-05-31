@@ -34,8 +34,7 @@ module.exports = (sequelize) => {
       type: DataTypes.INTEGER
     },
     image: {
-      type: DataTypes.STRING,
-      defaultValue: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpp8wG9nUAEpde2lHMEiTpQq_p6uQroXucUa6W-eKgXDSF_xA_KLQqN0ZpSd_cA1Fbd1U&usqp=CAU",
+      type: DataTypes.STRING,      
       
     },
     createdInDb:{

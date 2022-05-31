@@ -24,7 +24,7 @@ const getApiInfo = async () => {
                 defense: p.stats[5].base_stat,
                 height: p.height,
                 weight: p.weight,
-                types: p.types.map(t=> t.type.name)
+                types: p.types.map(t=> t.type)
 
                 };            
             })
@@ -53,7 +53,7 @@ const getPokemonDb = async () => {
                     attributes:[]// me trae todos los atributos de la base de datos
                 }
             }
-        }); 
+        }) 
     }catch(error){
         console.log(error)
     }    
@@ -86,7 +86,7 @@ const showAllPokemon = async (name) => {
           defense: p.stats[5].base_stat,
           height: p.height,
           weight: p.weight,
-          types: p.types.map((t) => t.type.name),
+          types: p.types.map((t) => t.type),
         };
         return pokeObj;
       });
@@ -162,7 +162,7 @@ const showAllPokemonById = async (req, res) =>{
                     speed: e.stats[5].base_stat,       
                     height: e.height,
                     weight: e.weight,
-                    types: e.types.map(e => e.type.name),
+                    types: e.types.map(e => e.type),
                     image: e.sprites.front_default
                 }
                 return pokeObj;
