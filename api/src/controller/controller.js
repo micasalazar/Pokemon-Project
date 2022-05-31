@@ -24,7 +24,7 @@ const getApiInfo = async () => {
                 defense: p.stats[5].base_stat,
                 height: p.height,
                 weight: p.weight,
-                type: p.types.map(t=> t.type.name)
+                types: p.types.map(t=> t.type.name)
 
                 };            
             })
@@ -86,7 +86,7 @@ const showAllPokemon = async (name) => {
           defense: p.stats[5].base_stat,
           height: p.height,
           weight: p.weight,
-          type: p.types.map((t) => t.type.name),
+          types: p.types.map((t) => t.type.name),
         };
         return pokeObj;
       });
@@ -162,7 +162,7 @@ const showAllPokemonById = async (req, res) =>{
                     speed: e.stats[5].base_stat,       
                     height: e.height,
                     weight: e.weight,
-                    type: e.types.map(e => e.type.name),
+                    types: e.types.map(e => e.type.name),
                     image: e.sprites.front_default
                 }
                 return pokeObj;
@@ -212,7 +212,7 @@ const addNewPokemon = async(req, res)=>{
         speed,       
         height,
         weight,
-        type,
+        types,
         image,
         createdInDb
     }= req.body;
@@ -230,7 +230,7 @@ const addNewPokemon = async(req, res)=>{
             createdInDb   
         });
         const allTypes = await Type.findAll({
-            where:{name:type}
+            where:{name:types}
                        
         })
         newPokemon.addType(allTypes)

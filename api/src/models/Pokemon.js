@@ -35,7 +35,7 @@ module.exports = (sequelize) => {
     },
     image: {
       type: DataTypes.STRING,
-      defaultValue: "https://assets.stickpng.com/images/580b57fcd9996e24bc43c31f.png",
+      defaultValue: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpp8wG9nUAEpde2lHMEiTpQq_p6uQroXucUa6W-eKgXDSF_xA_KLQqN0ZpSd_cA1Fbd1U&usqp=CAU",
       
     },
     createdInDb:{
