@@ -40,28 +40,32 @@ useEffect(()=>{
     dispatch(getTypes())
 },[dispatch]);
 
+
 function handleClick(e){
 e.preventDefault();
 dispatch(getPokemon());
-
 }
+
 function handleFilterByType(e){
 e.preventDefault()
 dispatch(filterByType(e.target.value));
 setCurrentPage(1)
 }
+
 function handleFilterCreated(e){
 e.preventDefault()
 dispatch(filterCreated(e.target.value))
 setCurrentPage(1)
 setOrder(`Order by ${e.target.value}`)//setOrder es un estado local vacio que para lo unico que lo voy a usar es 
 }//para cuando yo setee esta pagina-->setCurrentPage(1) me modifique el estado local y se renderice
+
 function handleSortName(e){
 e.preventDefault()
 dispatch(orderByName(e.target.value));
 setCurrentPage(1)
 setOrder(`Order by ${e.target.value}`)
 }
+
 function handleSortByStrengh(e){
 e.preventDefault()
 dispatch(orderByStrengh(e.target.value));
@@ -106,7 +110,7 @@ setOrder(`Order by ${e.target.value}`)
                     </select>                    
                     
                     <select onChange={(e)=>handleFilterCreated(e)}>
-                    {/* <option value="pokemon">SHOW POKEMON</option>                     */}
+                    {/* <option value="pokemon">SHOW POKEMON</option>*/}
                     <option value="all">SHOW ALL POKEMON</option>
                     <option value="api">EXISTING</option>
                     <option value="created">CREATED</option>
@@ -125,7 +129,7 @@ setOrder(`Order by ${e.target.value}`)
                        currentPokemons?.map(e=>{
                             return(                                
                                     <Link to= {'/home' + e.id}>
-                                    <Card name={e.name} image={e.image} type={e.type} attack={e.attack} key={e.id}/> {/*le paso las props que tenia como destructuring en el componente. y me traigo el estado global*/}
+                                    <Card name={e.name} image={e.image} types={e.types} attack={e.attack} key={e.id}/> {/*le paso las props que tenia como destructuring en el componente. y me traigo el estado global*/}
                                     </Link>                   
 
                             )
