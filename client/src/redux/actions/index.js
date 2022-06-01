@@ -102,6 +102,26 @@ export function postPokemon(payload){
         }
     }
 }
+// Para crear mi componente DetailPokemon
+// GET POKEMON BY ID
+export function getDetail(id){
+    return async function(dispatch){
+        try {
+            let idJson = await axios.get(`http://localhost:3001/pokemons/${id}`)            
+            return dispatch({
+                type: 'GET_DETAILS',
+                payload: idJson.data,
+                res: console.log(idJson.data)
+            })
+           
+        } catch (error) {
+            console.log(error)
+            
+        }
+
+    }
+}
+
 
 
 

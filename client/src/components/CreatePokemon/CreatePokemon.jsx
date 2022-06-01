@@ -33,7 +33,7 @@ console.log(input)
 function validateForm(input){
     let errors={};
     const ReName = new RegExp(/^[A-Za-z\s]+$/g)
-    const ReUrl = new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&//=]*)/);
+    // const ReUrl = new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&//=]*)/);
     
     if(pokemons.find(f=>f.name===input.name.toLowerCase())){
         errors.name = 'The pokemon you are trying to create already exists'
@@ -236,7 +236,7 @@ return (
                 <div>
                 {types?.map((t)=>{
                     return(
-                        <label><input type='checkbox' value={t.name} name={t.name} onChange={(e)=>handleCheck(e)}/>{t.name}</label>
+                        <label key={t.id}><input type='checkbox' value={t.name} name={t.name} onChange={(e)=>handleCheck(e)}/>{t.name}</label>
                     )
                 })}
                 

@@ -1,7 +1,8 @@
 const initialState = {
     allPokemon: [], //estado para traerme todos los pokemon
     filterPokemon:[],//hago el filtro y me guardo el state
-    types:[]
+    types:[],
+    details:[]
 }
 
 function rootReducer (state = initialState, action){
@@ -20,9 +21,9 @@ function rootReducer (state = initialState, action){
 
             }
         case 'FILTER_BY_TYPE':
-            const pokemon = state.allPokemon;//pokemon, es la copia del estado global donde me traigo allPokemon
+            let pokemon = state.allPokemon;//pokemon, es la copia del estado global donde me traigo allPokemon
             const typesFilter = action.payload === 'all'? pokemon
-            :pokemon.filter(p=>p.types?.includes(action.payload))
+            :pokemon.filter(p=>p.types.map(t=>t.name).includes(action.payload))
             return{
                 ...state,
                 filterPokemon: typesFilter,
@@ -52,17 +53,17 @@ function rootReducer (state = initialState, action){
         case 'ORDER_BY_NAME':
             let orderPokeByName = action.payload === 'asc'
             ?state.filterPokemon.sort( function (a,b){
-                if(a.name > b.name){
+                if(a.name.toLowerCase() > b.name.toLowerCase()){
                     return 1;
-                }if(b.name > a.name){
+                }if(b.name.toLowerCase() > a.name.toLowerCase()){
                     return -1;
                 }
                 return 0;
             })
             :state.filterPokemon.sort( function (a,b){
-                if(a.name > b.name){
+                if(a.name.toLowerCase() > b.name.toLowerCase()){
                     return -1;
-                }if(b.name > a.name){
+                }if(b.name.toLowerCase() > a.name.toLowerCase()){
                     return 1;
                 }
                 return 0;
@@ -102,6 +103,12 @@ function rootReducer (state = initialState, action){
         case 'POST_POKEMON':
             return{
                 ...state,//devuelve el estado como esta porque voy a crearlo en una ruta nueva
+            }
+        case 'GET_DETAILS':
+            return{
+                ...state,
+                details: action.payload
+
             }
             default:
                 return state;

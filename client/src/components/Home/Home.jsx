@@ -78,6 +78,9 @@ setOrder(`Order by ${e.target.value}`)
     return(
         <div>
             <div>
+                <div>
+                    <Link to='/'><button>POKEMON</button></Link>
+                </div>
                 
                 <div>
                 <Link to='/pokemons'>Create your Pokemon</Link>
@@ -102,7 +105,7 @@ setOrder(`Order by ${e.target.value}`)
                         <option value="all">AL TYPES</option>                                             
                         {
                         alltypes?.map(t=>{
-                            console.log(alltypes)
+                            // console.log(alltypes)
                             return(                               
                                 <option value={t.name} key={t.id}>{t.name}</option>                                
                             )
@@ -128,7 +131,7 @@ setOrder(`Order by ${e.target.value}`)
                     {//mapeo el estado global y le paso cada iuna de las props que necesita mi card
                        currentPokemons?.map(e=>{
                             return(                                
-                                    <Link to= {'/home' + e.id}>
+                                    <Link to= {'/pokemons/' + e.id}>
                                     <Card name={e.name} image={e.image} types={e.types} attack={e.attack} key={e.id}/> {/*le paso las props que tenia como destructuring en el componente. y me traigo el estado global*/}
                                     </Link>                   
 

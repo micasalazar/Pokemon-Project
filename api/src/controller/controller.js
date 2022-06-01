@@ -53,7 +53,9 @@ const getPokemonDb = async () => {
                     attributes:[]// me trae todos los atributos de la base de datos
                 }
             }
-        }) 
+        })
+       
+
     }catch(error){
         console.log(error)
     }    
