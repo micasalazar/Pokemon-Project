@@ -2,6 +2,7 @@ import React from 'react'
 import {useState} from 'react';
 import {useDispatch} from 'react-redux';
 import {getByName} from '../../redux/actions'
+import styles from '../SearchBar/SearchBar.module.css';
 
 function SearchBar() {
 let dispatch = useDispatch();
@@ -22,15 +23,15 @@ dispatch(getByName(name))//este name va a ser mi estado local. Voy a ir guardand
 setName('')
 }
   return(
-      <div>
-          <input 
+      <div className={styles.cont}>
+          <input className={styles.search}
           type='text'
           placeholder='Search Pokemon...'
           value={name}
           onChange={(e)=> handleInputChange(e)}
           />
           <button
-           type='submit' onClick={(e)=>handleSubmit(e)}>Search your Pokemon</button>
+           type='submit' onClick={(e)=>handleSubmit(e)} className={styles.btnS}>Search your Pokemon</button>
       </div>
   )
 }

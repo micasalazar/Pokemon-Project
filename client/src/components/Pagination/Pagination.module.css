@@ -1,0 +1,23 @@
+.li{
+    display: inline-block;     
+    }
+.btnPagination{
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    font-family: monospace;
+    font-weight:0 ;
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 0.3rem;
+    background-color:#fec89a;
+    color: black;   
+    text-shadow: 1px 0 0 #fff, -1px 0 0 #fff,
+    0 1px 0 #fff, 0 -1px 0 #fff, 1px 1px 0 #fff, -1px -1px 0 #fff,
+   -1px 1px 0 #fff, 1px -1px 0 #fff;
+    cursor: pointer;
+}
+.btnPagination:hover{
+    transform: scale(1.1);
+    transition: all 1s ease;
+}

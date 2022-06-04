@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {Link, useNavigate} from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';
 import {getPokemon, getTypes, postPokemon} from '../../redux/actions';
+import styles from '../CreatePokemon/CreatePokemon.module.css'
 
 
 export default function CreatePokemon() {
@@ -91,7 +92,8 @@ function handleChange(e){
             ...input,
             [e.target.name]:e.target.value
 
-        }))
+        })
+        )
     }
 
 // HandleCheck-->si el input esta check(si esta marcado el input. agarra mi estado y seteamelo)
@@ -144,13 +146,16 @@ dispatch(getPokemon())
 }, [])
 
 return (
-    <div>
-        <Link to='/home'><button>Back</button></Link>
-        <h1>Create Your Pokemon</h1>
-        <form onSubmit={(e)=>handleSubmit(e)}>
-            <div>
-                <label>Name:</label>
+    <div className={styles.container}>
+        <Link to='/home' className={styles.home}><button className={styles.btnBack}>Back</button></Link>
+        <div className={styles.createPokemon}>
+        <h1 className={styles.h1}>Create Your Pokemon</h1>
+        <form onSubmit={(e)=>handleSubmit(e)} className={styles.form}>
+            
+            <div className={styles.input}>
+                <label className={styles.title}>NAME:</label>
                 <input
+                className={styles.placeholder}
                 type='text'
                 value={input.name}
                 name='name'
@@ -159,9 +164,10 @@ return (
                     <p>{errors.name}</p>
                 )}
             </div>
-            <div>
-                <label>Hp:</label>
+            <div className={styles.input}>
+                <label className={styles.title}>HP:</label>
                 <input
+                className={styles.placeholder}
                 type='number'
                 value={input.hp}
                 name='hp'
@@ -171,9 +177,10 @@ return (
                     <p>{errors.hp}</p>
                 )}
             </div>
-            <div>
-                <label>Attack:</label>
+            <div className={styles.input}>
+                <label  className={styles.title}>ATTACK:</label>
                 <input
+                className={styles.placeholder}
                 type='number'
                 value={input.attack}
                 name='attack'
@@ -183,9 +190,10 @@ return (
                     <p>{errors.attack}</p>
                 )}
             </div>
-            <div>
-                <label>Defense:</label>
+            <div className={styles.input}>
+                <label className={styles.title}>DEFENSE:</label>
                 <input
+                className={styles.placeholder}
                 type='number'
                 value={input.defense}
                 name='defense'
@@ -195,9 +203,10 @@ return (
                     <p>{errors.defense}</p>
                 )}
             </div>
-            <div>
-                <label>Speed:</label>
+            <div className={styles.input}>
+                <label className={styles.title}>SPEED:</label>
                 <input
+                className={styles.placeholder}
                 type='number'
                 value={input.speed}
                 name='speed'
@@ -207,9 +216,10 @@ return (
                     <p>{errors.speed}</p>
                 )}
             </div>
-            <div>
-                <label>Weight:</label>
+            <div className={styles.input}>
+                <label className={styles.title}>WEIGHT:</label>
                 <input
+                className={styles.placeholder}
                 type='number'
                 value={input.weight}
                 name='weight'
@@ -219,9 +229,9 @@ return (
                     <p>{errors.weight}</p>
                 )}
             </div>
-            <div>
-                <label>Height:</label>
-                <input
+            <div className={styles.input}>
+                <label className={styles.title}>HEIGHT:</label>
+                <input className={styles.placeholder}
                 type='number'
                 value={input.height}
                 name='height'
@@ -231,8 +241,8 @@ return (
                     <p>{errors.height}</p>
                 )}
             </div>
-            <div>
-                <label>Types:</label> 
+            <div className={styles.input}>
+                <label  className={styles.title}>TYPES:</label> 
                 <div>
                 {types?.map((t)=>{
                     return(
@@ -244,9 +254,10 @@ return (
                 {errors.types && ( <p>{errors.types}</p> )}      
                
             </div>
-            <div>
-                <label>Image:</label>
+            <div className={styles.input}>
+                <label className={styles.title}>IMAGE:</label>
                 <input
+                className={styles.placeholder}
                 type='text'
                 value={input.image}
                 name='image'
@@ -254,11 +265,12 @@ return (
                 onChange={(e)=>handleChange(e)}
                 />{errors.image && (
                     <p>{errors.image}</p>
-                )}       
-               
+                )}               
             </div>
-            <button type='submit'>Create Pokemon</button>
-        </form>        
+            
+            <button type='submit'  className={styles.btnSubmit}>Create Pokemon</button>
+        </form>
+        </div>        
     </div>
 )
 }

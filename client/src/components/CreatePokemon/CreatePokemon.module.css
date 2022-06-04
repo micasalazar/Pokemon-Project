@@ -1,0 +1,111 @@
+.container{ 
+        /* height: 100vh;
+        width: 100%; */
+ 
+        background-color:  #fec89a;
+        background-size: cover;
+        /* flex-wrap: wrap;
+        display: flex; */
+        height: 100vh;
+        width: 100%;
+        display: flex;
+        /* overflow: auto; */
+    }
+.btnBack{   
+    background-color:#fec89a;
+    border-radius: 20px;
+    border-color: black;
+    font-family: monospace;
+    font-weight: bolder;       
+    padding: 10px 7px 10px 7px;
+    position: relative;
+    cursor: pointer;
+    
+}
+
+.btnBack:hover{
+background-color:white;
+transition-delay: 0.2s;
+transition: 0.8s;
+font-family: monospace;
+color: #2b4162;
+cursor: pointer;
+}
+.home{
+    padding: 10px;
+   
+}
+.createPokemon{      
+        
+        margin: 0 auto;
+        background: #ffd166;
+        color:black;
+        font-family: monospace;    
+        width: 45rem;
+        height: 34rem;
+        padding: 20px;
+        align-items: center;
+        box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.377);
+        border: 2px solid black ;
+        border-radius: 1rem;
+        transition: transform .5s;
+        margin-top: 20px;
+        margin-bottom: 15px;       
+        margin-right:auto;
+        background: rgba(255,255,255,0.2);
+        box-shadow: 0 0 10px rgb(255, 255, 255);    
+        backdrop-filter: blur(7px);
+
+}
+
+.form{
+    font-family: monospace;
+
+}
+.h1{
+    font-family: monospace;
+    font-size:35px;
+    font-weight:bolder;
+    /* align-content: center;
+    display: flex; */
+}
+.title{
+    font-family: monospace;
+    font-size:15px;
+    font-weight:bolder;
+}
+.btnSubmit{   
+    background-color: #fec89a;
+    border-radius: 20px;
+    border-color: black;
+    font-family: monospace;
+    font-weight: bolder;       
+    padding: 10px 7px 10px 7px;
+    position: relative;
+    margin-left: -680px; 
+    margin-top: 10px;
+    cursor: pointer;
+    margin: auto;
+    margin: 1%;
+   
+}
+
+.btnSubmit:hover{
+background-color:white;
+transition-delay: 0.2s;
+transition: 0.8s;
+font-family: monospace;
+color: #2b4162;
+cursor: pointer;
+}
+.input{
+    display: block;
+    margin: 1%;
+   
+}
+
+.placeholder{
+    border-radius:20px;
+    padding: 4px 1px 4px 1px;
+    margin:auto;
+}

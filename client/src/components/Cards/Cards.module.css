@@ -1,0 +1,94 @@
+/* .cards{
+    margin: 0 auto;
+    background: #ffd166;
+    color:black;
+    font-family: monospace;    
+    width: 15rem;
+    height: 25rem;
+    padding: 20px;
+    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.377);
+    border-radius: 20px;
+} */
+
+/* $border-radius-size: 14px; */
+/* $barbarian: #EC9B3B;
+$archer: #EE5487;
+$giant: #F6901A;
+$goblin: #82BB30;
+$wizard: #4FACFF; */
+
+.contentCards{  
+    margin: auto;
+    width: 600px;
+    text-align: center;  
+}
+.wrapper{
+    padding-top: 40px;
+    padding-bottom: 40px;
+    
+}
+.clashCard{
+  background:#fec89a;
+  /* background: rgba(255,255,255,0.2); */
+     
+  backdrop-filter: blur(7px);
+  width: 300px;
+  display: inline-block;
+  margin: auto;
+  border-radius: 30%;
+  position: relative;
+  text-align: center;
+  box-shadow: -1px 15px 30px -12px black;
+  z-index: 9999; 
+
+  transition: transform .5s;
+  margin-top: 20px;
+  margin-bottom: 15px;
+  margin-right: 2px;
+  margin-left: 2px;
+  /* background-color: rgba(255, 255, 255, 0.767); */
+  text-decoration: none;
+  box-shadow: 5px 2px 2px 1px rgba(0, 0, 0, 0.2)
+}
+.clashCard:hover{
+  transform: scale(1.1);
+}
+
+.clashCard__image{
+  position: relative;
+  height: 230px;
+  margin-bottom: 35px;
+  border-top-left-radius: 14px;
+  border-top-right-radius:14px;
+}
+.clashCard__imagePokemon{  
+    width: 280px;  
+    position: absolute;
+    top: -65px;
+    left: -65px;
+}
+.cardName{
+  text-transform: uppercase;
+  font-family: monospace;
+  font-size: 20px;
+  font-weight: 700;
+  color: black;
+  margin-bottom: 3px;
+}
+.h5{
+  text-transform: uppercase;
+  font-family: monospace;
+  font-size: 15px;
+  font-weight: 700;
+  color: black;
+  margin-bottom: 3px;
+
+}
+.attack{
+  text-transform: uppercase;
+  font-family: monospace;
+  font-size: 18px;
+  font-weight: 700;
+  color: black;
+  /* margin-bottom: px; */
+}
